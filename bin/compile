@@ -20,7 +20,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # s3 packages
-MONO_PACKAGE="https://s3-eu-west-1.amazonaws.com/mono-bucket/bla.tar"
+MONO_PACKAGE="https://s3.amazonaws.com/mono-bucket2/bla2.tar"
 
 # vendor directories
 VENDORED_MONO="$(mktmpdir mono)"
