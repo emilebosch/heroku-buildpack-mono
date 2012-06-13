@@ -20,7 +20,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # s3 packages
-MONO_PACKAGE="https://s3-eu-west-1.amazonaws.com/mono-bucket/bla.tar"
+#MONO_PACKAGE="https://s3-eu-west-1.amazonaws.com/mono-bucket/bla.tar"
+MONO_PACKAGE="http://${S3_BUCKET}.s3.amazonaws.com/mono-${MONO_VERSION}.tar.gz"
 
 # vendor directories
 VENDORED_MONO="$(mktmpdir mono)"
@@ -52,7 +53,7 @@ export CPPPATH="$INCLUDE_PATH"
 
 #build app
 SLN=$(ls $BUILD_DIR/*.sln | head -1)
-BUILDCMD="$VENDORED_MONO/bin/mono $VENDORED_MONO/lib/mono/4.0/xbuild.exe $SLN"
+BUILDCMD="$VENDORED_MONO/bin/mono $VENDORED_MONO/lib/mono/4.0/xbuild.exe $SLN /p:Configuration=Release"
 echo "-----> building via $BUILDCMD"
 eval $BUILDCMD
 
